@@ -1,67 +1,45 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Menu, X, Zap, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent mix-blend-difference text-white",
-        isScrolled
-          ? "bg-background/95 border-border py-3 backdrop-blur-sm"
-          : "bg-transparent py-5"
-      )}
-    >
-      <div className="container mx-auto px-4 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-black">
+      <div className="container mx-auto px-0 flex items-stretch justify-between h-20">
         <Link href="/">
-          <a className="flex items-center gap-2 group cursor-pointer">
-            <div className="bg-primary text-black p-1 rounded-none group-hover:bg-white transition-colors">
-              <Zap className="h-6 w-6 fill-current" />
-            </div>
-            <span className="font-heading font-bold text-2xl tracking-tight uppercase">
-              GAINMUSCLE<span className="text-primary">.AI</span>
+          <a className="flex items-center px-6 md:px-10 border-r border-black hover:bg-black hover:text-white transition-colors group cursor-pointer">
+            <span className="font-heading font-black text-2xl tracking-tighter uppercase">
+              GainMuscle<span className="text-primary">AI</span>
             </span>
           </a>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1">
-          {["Features", "System", "Pricing", "Enterprise"].map((item) => (
+        <div className="hidden md:flex items-stretch flex-1 justify-end">
+          {["Philosophy", "Process", "Plans", "Contact"].map((item) => (
             <a 
               key={item}
               href={`#${item.toLowerCase()}`} 
-              className="px-4 py-2 text-sm font-mono uppercase tracking-widest hover:bg-white hover:text-black transition-colors border border-transparent hover:border-white"
+              className="flex items-center px-8 font-sans font-medium text-sm uppercase tracking-wider hover:bg-secondary transition-colors border-l border-black"
             >
               {item}
             </a>
           ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" className="font-mono uppercase text-xs tracking-widest hover:bg-white hover:text-black rounded-none">
-            [ Login ]
-          </Button>
-          <Button className="font-heading font-bold uppercase tracking-wide bg-primary text-black hover:bg-white hover:text-black rounded-none border border-primary hover:border-white transition-all">
-            Initialize <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <a 
+            href="#" 
+            className="flex items-center px-10 bg-black text-white font-heading font-black text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-colors"
+          >
+            Start Now <ArrowUpRight className="ml-2 h-5 w-5" />
+          </a>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 text-white border border-white/20"
+          className="md:hidden px-6 border-l border-black hover:bg-secondary"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
@@ -70,18 +48,20 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border p-0 flex flex-col animate-in slide-in-from-top-5">
-          {["Features", "System", "Pricing", "Enterprise"].map((item) => (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-black flex flex-col">
+          {["Philosophy", "Process", "Plans", "Contact"].map((item) => (
             <a 
               key={item}
               href={`#${item.toLowerCase()}`} 
-              className="text-xl font-heading uppercase font-bold p-6 border-b border-border hover:bg-primary hover:text-black transition-colors"
+              className="py-6 px-6 border-b border-black font-heading font-black text-2xl uppercase hover:bg-primary hover:text-white transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {item}
             </a>
           ))}
-          <Button className="w-full font-heading uppercase rounded-none h-16 text-lg bg-white text-black hover:bg-primary">Initialize System</Button>
+          <Button className="rounded-none py-8 font-heading font-black uppercase text-xl bg-black text-white hover:bg-primary">
+            Start Transformation
+          </Button>
         </div>
       )}
     </nav>

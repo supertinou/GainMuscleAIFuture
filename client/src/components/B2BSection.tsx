@@ -1,71 +1,47 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Building2, Users, BarChart3, Check, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function B2BSection() {
   return (
-    <section id="enterprise" className="py-32 bg-black text-white relative overflow-hidden border-y border-border">
-      {/* Grid Background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <div className="sticky top-24">
-            <div className="flex items-center gap-2 mb-8">
-               <div className="h-px w-12 bg-primary"></div>
-               <span className="font-mono text-primary text-xs tracking-widest uppercase">Enterprise Solutions</span>
+    <section id="contact" className="bg-black text-white">
+      <div className="grid lg:grid-cols-2 min-h-[600px]">
+        <div className="p-12 md:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/20">
+          <span className="font-mono text-primary text-sm font-bold uppercase tracking-widest mb-6">Enterprise Division</span>
+          
+          <h2 className="font-heading font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter mb-10">
+            Scale<br/>Your<br/>Impact
+          </h2>
+          
+          <p className="font-sans text-xl text-gray-400 max-w-md mb-12 leading-relaxed">
+            Equip your fitness facility with visual persuasion technology. Proven to increase membership conversion by 3X.
+          </p>
+          
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-4 text-sm font-mono uppercase tracking-wider text-gray-500">
+              <span>Gym Franchises</span>
+              <span className="w-1 h-1 bg-primary rounded-full"></span>
+              <span>Personal Trainers</span>
+              <span className="w-1 h-1 bg-primary rounded-full"></span>
+              <span>Online Coaches</span>
             </div>
-            
-            <h2 className="text-5xl md:text-7xl font-heading font-bold mb-8 leading-[0.85] uppercase">
-              Conversion <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Velocity</span>
-            </h2>
-            
-            <p className="text-gray-400 text-lg mb-12 font-light max-w-md font-mono">
-              Integrate our visualization engine directly into your sales pipeline. 
-              <br/><br/>
-              <span className="text-white">{">"} Gyms report 340% ROI within 30 days.</span>
-            </p>
-
-            <Button size="lg" className="bg-white text-black hover:bg-primary hover:text-black font-heading font-bold h-16 px-10 rounded-none text-lg group">
-              DEPLOY SOLUTION <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
           </div>
+        </div>
 
-          <div className="grid gap-8">
-            {[
-              {
-                icon: Building2,
-                title: "Franchise Integration",
-                desc: "Deploy kiosks in lobby environments. Leads scan QR -> Upload -> Visualize -> Sign Up.",
-                stat: "45s Avg. Session"
-              },
-              {
-                icon: Users,
-                title: "Coach Dashboard",
-                desc: "Generate 'What If' scenarios for cold outreach. Show clients their future.",
-                stat: "+28% Reply Rate"
-              },
-              {
-                icon: BarChart3,
-                title: "Retention Protocol",
-                desc: "Visual roadmap generation for existing members to reduce churn.",
-                stat: "-15% Churn"
-              }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ x: 10 }}
-                className="bg-zinc-900/50 border-l-4 border-zinc-800 hover:border-primary p-8 transition-all"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <item.icon className="w-8 h-8 text-white" />
-                  <span className="font-mono text-xs text-primary border border-primary/30 px-2 py-1">{item.stat}</span>
-                </div>
-                <h3 className="text-2xl font-heading font-bold mb-2 uppercase">{item.title}</h3>
-                <p className="text-gray-500 font-mono text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
+        <div className="grid grid-rows-2">
+          <div className="p-12 border-b border-white/20 hover:bg-white hover:text-black transition-colors group cursor-pointer flex flex-col justify-center">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-heading font-black text-4xl uppercase">Request Demo</h3>
+              <ArrowRight className="w-8 h-8 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </div>
+            <p className="font-sans text-lg opacity-60 group-hover:opacity-100">For enterprise deployments {">"} 5 locations.</p>
+          </div>
+          
+          <div className="p-12 hover:bg-primary hover:text-white transition-colors group cursor-pointer flex flex-col justify-center">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-heading font-black text-4xl uppercase">Coach Access</h3>
+              <ArrowRight className="w-8 h-8 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </div>
+            <p className="font-sans text-lg opacity-60 group-hover:opacity-100">For independent contractors and online coaches.</p>
           </div>
         </div>
       </div>

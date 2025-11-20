@@ -24,82 +24,80 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  --font-sans: "Space Grotesk", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-heading: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Archivo", sans-serif;
   
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
-  --radius-xl: 0px;
 }
 
 :root {
-  /* ACID INDUSTRIAL THEME */
-  /* Dark mode by default essentially, but high contrast */
+  /* SWISS EDITORIAL THEME */
+  /* High Contrast, Stark, Bold */
   
-  --background: 0 0% 5%; /* Almost Black */
-  --foreground: 0 0% 95%; /* Off White */
+  --background: 0 0% 100%; /* Pure White */
+  --foreground: 0 0% 0%; /* Pure Black */
   
-  --card: 0 0% 8%;
-  --card-foreground: 0 0% 95%;
+  --card: 0 0% 98%;
+  --card-foreground: 0 0% 0%;
   
-  --popover: 0 0% 8%;
-  --popover-foreground: 0 0% 95%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
   
-  /* ACID GREEN */
-  --primary: 78 100% 50%; 
-  --primary-foreground: 0 0% 0%; /* Black text on green */
+  /* International Orange */
+  --primary: 16 100% 50%; 
+  --primary-foreground: 0 0% 100%;
   
-  /* Dark Grey */
-  --secondary: 0 0% 15%;
-  --secondary-foreground: 0 0% 95%;
+  /* Light Grey for secondary elements */
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 0%;
   
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 60%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
   
-  --accent: 0 0% 20%;
-  --accent-foreground: 0 0% 95%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 0%;
   
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 20%;
-  --input: 0 0% 20%;
-  --ring: 78 100% 50%;
+  --border: 0 0% 0%; /* Black borders */
+  --input: 0 0% 0%;
+  --ring: 16 100% 50%;
   
-  --radius: 0px; /* Sharp corners for brutalist look */
+  --radius: 0px; /* No border radius */
 }
 
 .dark {
-  /* Same as root since we want a dark theme overall */
+  /* Inverted Swiss */
   --background: 0 0% 5%;
-  --foreground: 0 0% 95%;
+  --foreground: 0 0% 100%;
   
-  --card: 0 0% 8%;
-  --card-foreground: 0 0% 95%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 100%;
   
-  --popover: 0 0% 8%;
-  --popover-foreground: 0 0% 95%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
   
-  --primary: 78 100% 50%;
-  --primary-foreground: 0 0% 0%;
+  --primary: 16 100% 50%;
+  --primary-foreground: 0 0% 100%;
   
   --secondary: 0 0% 15%;
-  --secondary-foreground: 0 0% 95%;
+  --secondary-foreground: 0 0% 100%;
   
   --muted: 0 0% 15%;
   --muted-foreground: 0 0% 60%;
   
-  --accent: 0 0% 20%;
-  --accent-foreground: 0 0% 95%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 100%;
   
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
   
   --border: 0 0% 20%;
   --input: 0 0% 20%;
-  --ring: 78 100% 50%;
+  --ring: 16 100% 50%;
 }
 
 @layer base {
@@ -107,28 +105,16 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black;
+    @apply font-sans antialiased bg-background text-foreground selection:bg-black selection:text-white;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading uppercase tracking-tight font-bold;
-  }
-  p {
-    @apply font-sans font-light;
+    @apply font-heading font-black uppercase tracking-tighter;
   }
 }
 
 @layer utilities {
-  .text-outline {
-    -webkit-text-stroke: 1px hsl(var(--foreground));
-    color: transparent;
-  }
-  .text-outline-primary {
-    -webkit-text-stroke: 1px hsl(var(--primary));
-    color: transparent;
-  }
-  .bg-grid-pattern {
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-                      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+  .text-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 }
