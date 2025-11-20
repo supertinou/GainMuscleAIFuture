@@ -24,80 +24,80 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  --font-sans: "Inter", sans-serif;
-  --font-heading: "Archivo", sans-serif;
+  --font-sans: "Roboto", sans-serif;
+  --font-heading: "Barlow Condensed", sans-serif;
   
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 }
 
 :root {
-  /* SWISS EDITORIAL THEME */
-  /* High Contrast, Stark, Bold */
+  /* SPORT MODE THEME */
+  /* High Energy, Dynamic, Aggressive */
   
-  --background: 0 0% 100%; /* Pure White */
-  --foreground: 0 0% 0%; /* Pure Black */
+  --background: 240 10% 4%; /* Near Black */
+  --foreground: 0 0% 100%;
   
-  --card: 0 0% 98%;
-  --card-foreground: 0 0% 0%;
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 100%;
   
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 100%;
   
-  /* International Orange */
-  --primary: 16 100% 50%; 
-  --primary-foreground: 0 0% 100%;
+  /* Safety Yellow / Volt */
+  --primary: 55 95% 55%; 
+  --primary-foreground: 0 0% 0%;
   
-  /* Light Grey for secondary elements */
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 0%;
+  /* Charcoal */
+  --secondary: 240 5% 15%;
+  --secondary-foreground: 0 0% 100%;
   
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 60%;
   
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  --accent: 240 5% 20%;
+  --accent-foreground: 0 0% 100%;
   
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 0%; /* Black borders */
-  --input: 0 0% 0%;
-  --ring: 16 100% 50%;
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --ring: 55 95% 55%;
   
-  --radius: 0px; /* No border radius */
+  --radius: 0.5rem;
 }
 
 .dark {
-  /* Inverted Swiss */
-  --background: 0 0% 5%;
+  /* Same as root */
+  --background: 240 10% 4%;
   --foreground: 0 0% 100%;
   
-  --card: 0 0% 10%;
+  --card: 240 10% 6%;
   --card-foreground: 0 0% 100%;
   
-  --popover: 0 0% 5%;
+  --popover: 240 10% 6%;
   --popover-foreground: 0 0% 100%;
   
-  --primary: 16 100% 50%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 55 95% 55%; 
+  --primary-foreground: 0 0% 0%;
   
-  --secondary: 0 0% 15%;
+  --secondary: 240 5% 15%;
   --secondary-foreground: 0 0% 100%;
   
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 60%;
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 60%;
   
-  --accent: 0 0% 15%;
+  --accent: 240 5% 20%;
   --accent-foreground: 0 0% 100%;
   
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
   
-  --border: 0 0% 20%;
-  --input: 0 0% 20%;
-  --ring: 16 100% 50%;
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --ring: 55 95% 55%;
 }
 
 @layer base {
@@ -105,16 +105,25 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-black selection:text-white;
+    @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-black uppercase tracking-tighter;
+    @apply font-heading uppercase italic font-black tracking-wider;
   }
 }
 
 @layer utilities {
-  .text-vertical {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+  .skew-x-12-safe {
+    transform: skewX(-12deg);
+  }
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    color: transparent;
+  }
+  .clip-slant {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  .clip-slant-reverse {
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
   }
 }
