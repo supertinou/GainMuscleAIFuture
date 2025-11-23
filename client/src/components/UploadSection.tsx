@@ -45,7 +45,10 @@ export function UploadSection() {
             </div>
           </motion.div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center space-y-2">
+            <p className="text-gray-400 font-medium">
+              Next step: Select a flexible Monthly or Yearly plan.
+            </p>
             <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
               100% Private & Secure. Photos are deleted after processing.
