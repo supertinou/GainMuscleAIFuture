@@ -13,7 +13,7 @@ export function UploadSection() {
             SEE THE <span className="text-primary">FUTURE YOU</span>
           </h2>
           <p className="text-xl text-gray-400 font-medium">
-            Upload a photo. Our AI builds muscle on your frame instantly.
+            Upload a photo. Our AI projects your fitness results instantly.
           </p>
         </div>
 
