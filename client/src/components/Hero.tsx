@@ -32,33 +32,28 @@ export function Hero() {
           </div>
           
           <h1 className="text-7xl md:text-9xl font-heading font-black italic leading-[0.85] tracking-tighter text-white drop-shadow-2xl">
-            BUILD YOUR <br />
+            SEE YOUR <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">
-              DREAM BODY
+              FUTURE BODY
             </span>
             <br />
-            <span className="text-stroke text-white/10">BEFORE YOU START</span>
+            <span className="text-stroke text-white/10">INSTANTLY</span>
           </h1>
           
           <p className="text-xl text-gray-400 max-w-xl font-medium leading-relaxed border-l-4 border-primary pl-6">
-            Stop guessing. Our AI analyzes your frame and projects your genetic potential. See exactly what 12 weeks of dedication looks like on YOU.
+            Upload a photo and watch your physique transform. Visualize your potential muscle growth in seconds.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 pt-4">
             <Button size="lg" className="h-16 px-10 text-2xl font-heading font-black italic uppercase bg-primary text-black hover:bg-white hover:text-black transition-all skew-x-[-10deg]">
               <span className="skew-x-[10deg] flex items-center gap-2">
-                Generate Evolution <Zap className="fill-black" />
-              </span>
-            </Button>
-            <Button size="lg" variant="outline" className="h-16 px-10 text-2xl font-heading font-black italic uppercase text-white border-2 border-white/20 hover:bg-white/10 hover:text-white transition-all skew-x-[-10deg]">
-               <span className="skew-x-[10deg] flex items-center gap-2">
-                Watch Trailer <Play size={20} fill="currentColor" />
+                Upload Photo <Zap className="fill-black" />
               </span>
             </Button>
           </div>
           
           <div className="flex items-center gap-8 pt-8 opacity-60">
-            {["Men's Health", "Bodybuilding.com", "Muscle & Fitness"].map(brand => (
+            {["Instant Result", "AI Powered", "Private"].map(brand => (
               <span key={brand} className="text-lg font-heading italic font-black uppercase text-white">{brand}</span>
             ))}
           </div>
@@ -69,7 +64,7 @@ export function Hero() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-5 relative h-[600px]"
+          className="lg:col-span-5 relative h-[600px] hidden lg:block"
         >
           <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full -z-10"></div>
           <EvolutionDemo />
