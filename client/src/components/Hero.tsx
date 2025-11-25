@@ -64,7 +64,7 @@ export function Hero() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-5 relative h-[600px] hidden lg:block"
+          className="lg:col-span-5 relative w-full max-w-md mx-auto aspect-[3/4] hidden lg:block"
         >
           <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full -z-10"></div>
           <EvolutionDemo />
