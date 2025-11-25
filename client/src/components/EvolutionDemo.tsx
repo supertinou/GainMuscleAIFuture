@@ -1,38 +1,15 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { GripVertical } from "lucide-react";
 import beforeImage from "@assets/generated_images/stage_1:_overweight_man_(uploaded_photo).png";
 import afterImage from "@assets/generated_images/stage_3:_athletic_physique.png";
 
 export function EvolutionDemo() {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
   const animationRef = useRef<number>(null);
   const lastTimeRef = useRef<number>(0);
 
-  const handleMove = useCallback((event: MouseEvent | TouchEvent) => {
-    if (!isDragging || !containerRef.current) return;
-
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
-    
-    const relativeX = clientX - containerRect.left;
-    const percentage = Math.min(Math.max((relativeX / containerRect.width) * 100, 0), 100);
-    
-    setSliderPosition(percentage);
-  }, [isDragging]);
-
-  const handleMouseDown = () => setIsDragging(true);
-  const handleMouseUp = () => setIsDragging(false);
-
   // Auto-slide animation
   useEffect(() => {
-    if (isDragging || isHovering) {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-      return;
-    }
-
     const animate = (time: number) => {
       if (!lastTimeRef.current) lastTimeRef.current = time;
       
@@ -50,29 +27,11 @@ export function EvolutionDemo() {
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [isDragging, isHovering]);
-
-  useEffect(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMove);
-      window.addEventListener('mouseup', handleMouseUp);
-      window.addEventListener('touchmove', handleMove);
-      window.addEventListener('touchend', handleMouseUp);
-    }
-
-    return () => {
-      window.removeEventListener('mousemove', handleMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleMove);
-      window.removeEventListener('touchend', handleMouseUp);
-    };
-  }, [isDragging, handleMove]);
+  }, []);
 
   return (
     <div 
-      className="relative w-full h-full overflow-hidden rounded-xl border-4 border-zinc-800 shadow-2xl select-none group bg-zinc-900 cursor-ew-resize"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      className="relative w-full h-full overflow-hidden rounded-xl border-4 border-zinc-800 shadow-2xl select-none group bg-zinc-900"
     >
       
       {/* Background (After Image) */}
@@ -105,11 +64,8 @@ export function EvolutionDemo() {
       <div 
         className="absolute top-0 bottom-0 w-1 bg-primary z-30 flex items-center justify-center shadow-[0_0_20px_rgba(250,204,21,0.5)]"
         style={{ left: `${sliderPosition}%` }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
-        ref={containerRef}
       >
-        <div className="w-12 h-12 bg-primary skew-x-[-10deg] flex items-center justify-center border-2 border-white shadow-lg transition-transform -ml-[22px] group-hover:scale-110">
+        <div className="w-12 h-12 bg-primary skew-x-[-10deg] flex items-center justify-center border-2 border-white shadow-lg transition-transform -ml-[22px]">
           <GripVertical className="text-black skew-x-[10deg]" />
         </div>
       </div>
