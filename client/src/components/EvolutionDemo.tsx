@@ -62,13 +62,9 @@ export function EvolutionDemo() {
 
       {/* Slider Handle */}
       <div 
-        className="absolute top-0 bottom-0 w-1 bg-primary z-30 flex items-center justify-center shadow-[0_0_20px_rgba(250,204,21,0.5)]"
+        className="absolute top-0 bottom-0 w-1 bg-primary z-30 shadow-[0_0_20px_rgba(250,204,21,0.5)]"
         style={{ left: `${sliderPosition}%` }}
-      >
-        <div className="w-12 h-12 bg-primary skew-x-[-10deg] flex items-center justify-center border-2 border-white shadow-lg transition-transform -ml-[22px]">
-          <GripVertical className="text-black skew-x-[10deg]" />
-        </div>
-      </div>
+      />
       
       {/* Mesh Pattern Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,#000_120%)] pointer-events-none opacity-60"></div>
